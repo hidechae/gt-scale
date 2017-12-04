@@ -1,0 +1,99 @@
+.container {
+  font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+  padding: 30px;
+
+  .gt {
+    margin-bottom: 30px;
+
+    .gt-neck {
+      display: table;
+      border-collapse: collapse;
+
+      .gt-string {
+        display: table-row;
+        border-collapse: collapse;
+
+        &:not(:last-child) {
+          .step:not(:first-child) {
+            border: 1px solid;
+          }
+          .step:first-child {
+            border-right: 10px solid;
+          }
+          .step:nth-child(4),
+          .step:nth-child(6),
+          .step:nth-child(8),
+          .step:nth-child(10),
+          .step:nth-child(16),
+          .step:nth-child(18),
+          .step:nth-child(20)
+          {
+            background-color: antiquewhite;
+          }
+
+          .step:nth-child(13) {
+            background-color: aquamarine;
+          }
+        }
+
+        .step {
+          border-collapse: collapse;
+          box-sizing: border-box;
+          display: table-cell;
+          height: 30px;
+          position: relative;
+          min-width: 60px;
+          width: 60px;
+
+          .label.active {
+            background-color: black;
+            border-radius: 50%;
+            color: white;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            left: 30px;
+            position: absolute;
+            text-align: center;
+            top: -10px;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .tone-list {
+    margin-bottom: 30px;
+
+    .tone-list-item {
+      background-color: antiquewhite;
+      border-radius: 50%;
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      width: 50px;
+
+      &.selected {
+        background-color: aquamarine;
+      }
+
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .scale-list {
+    .scale-list-item {
+      background-color: antiquewhite;
+      padding: 10px;
+      width: 300px;
+
+      &.selected {
+        background-color: aquamarine;
+      }
+    }
+  }
+}
