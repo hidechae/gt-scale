@@ -10,12 +10,13 @@ import { Scale } from './scale'
 export class AppComponent {
 
   toneSeq: Tone.T[]   = Tone.all
-  scaleSeq: Scale.T[] = Scale.all
+  scaleSeq: Scale.T[] = Scale.allScale
+  codeSeq: Scale.T[]  = Scale.allCode
 
   selectedTone: Tone.T   = null
   selectedScale: Scale.T = null
 
-  fretCount   = 21
+  fretCount   = 22
   gtStringSeq = [
     /** 1st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 7)  % 12),
     /** 2st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 2)  % 12),
@@ -27,24 +28,21 @@ export class AppComponent {
 
 
   ngOnInit(): void {
-    this.selectedTone  = this.toneSeq[0]
+    this.selectedTone  = this.toneSeq[3]
     this.selectedScale = this.scaleSeq[0]
   }
 
   getLabel(step: number): string {
     let v = (12 + step - this.selectedTone.step) % 12
     if (this.selectedScale.stepSeq.includes(v)) {
-      return Tone.map[step]
+
+      if (Tone.skeys.includes(this.selectedTone.step)) {
+        return Tone.smap[step]
+      } else {
+        return Tone.fmap[step]
+      }
     } else {
       return null
     }
-  }
-
-  selectTone(tone: Tone.T): void {
-    this.selectedTone = tone
-  }
-
-  selectScale(scale: Scale.T): void {
-    this.selectedScale = scale
   }
 }

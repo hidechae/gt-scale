@@ -6,12 +6,16 @@
         class  = "gt-string-list-item--{{ i + 1}}"
       )
         .step(*ngFor="let step of gtString")
-          .label([class.active]="getLabel(step)") {{ getLabel(step) }}
+          .label(
+            [class.active] = "getLabel(step)",
+            [class.root]   = "step == selectedTone.step",
+            [class.fifth]  = "step == selectedTone.step + 7"
+          ) {{ getLabel(step) }}
 
   .tone-list
     .tone-list-item(
       *ngFor  = "let tone of toneSeq",
-      (click) = "selectTone(tone)",
+      (click) = "selectedTone = tone",
       [class.selected] = "tone == selectedTone"
     )
       .label {{ tone.name }}
@@ -19,7 +23,15 @@
   .scale-list
     .scale-list-item(
       *ngFor  = "let scale of scaleSeq",
-      (click) = "selectScale(scale)",
+      (click) = "selectedScale = scale",
       [class.selected] = "scale == selectedScale"
     )
       .label {{ scale.name }}
+
+  .code-list
+    .code-list-item(
+    *ngFor  = "let code of codeSeq",
+    (click) = "selectedScale = code",
+    [class.selected] = "code == selectedScale"
+    )
+      .label {{ code.name }}

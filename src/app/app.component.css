@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .container {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+  font-size: 12px;
   padding: 30px; }
   .container .gt {
     margin-bottom: 30px; }
@@ -9,22 +10,24 @@
       border-collapse: collapse; }
       .container .gt .gt-neck .gt-string {
         display: table-row;
-        border-collapse: collapse; }
-        .container .gt .gt-neck .gt-string:not(:last-child) .step:not(:first-child) {
-          border: 1px solid; }
-        .container .gt .gt-neck .gt-string:not(:last-child) .step:first-child {
-          border-right: 10px solid; }
+        border-collapse: collapse;
+        /** fret */ }
         .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(4),
         .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(6),
         .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(8),
         .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(10),
         .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(16),
         .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(18),
-        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(20) {
+        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(20),
+        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(22) {
           background-color: antiquewhite; }
-        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(13) {
+        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(13),
+        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(25) {
           background-color: aquamarine; }
+        .container .gt .gt-neck .gt-string:last-child .step {
+          border-color: transparent !important; }
         .container .gt .gt-neck .gt-string .step {
+          border: 1px solid;
           border-collapse: collapse;
           box-sizing: border-box;
           display: table-cell;
@@ -32,18 +35,25 @@
           position: relative;
           min-width: 60px;
           width: 60px; }
-          .container .gt .gt-neck .gt-string .step .label.active {
-            background-color: black;
+          .container .gt .gt-neck .gt-string .step:first-child {
+            border-width: 0 10px 0 0; }
+          .container .gt .gt-neck .gt-string .step .label {
             border-radius: 50%;
             color: white;
             font-size: 12px;
             height: 20px;
             line-height: 20px;
-            left: 30px;
             position: absolute;
+            right: 10px;
             text-align: center;
             top: -10px;
             width: 20px; }
+            .container .gt .gt-neck .gt-string .step .label.active {
+              background-color: black; }
+              .container .gt .gt-neck .gt-string .step .label.active.root {
+                background-color: brown; }
+              .container .gt .gt-neck .gt-string .step .label.active.fifth {
+                background-color: chocolate; }
   .container .tone-list {
     margin-bottom: 30px; }
     .container .tone-list .tone-list-item {
@@ -58,11 +68,36 @@
         background-color: aquamarine; }
       .container .tone-list .tone-list-item:not(:first-child) {
         margin-left: 10px; }
-  .container .scale-list .scale-list-item {
-    background-color: antiquewhite;
-    padding: 10px;
-    width: 300px; }
-    .container .scale-list .scale-list-item.selected {
-      background-color: aquamarine; }
+  .container .scale-list {
+    display: inline-block;
+    vertical-align: top;
+    width: 360px; }
+    .container .scale-list .scale-list-item {
+      background-color: antiquewhite;
+      border-radius: 5px;
+      box-sizing: border-box;
+      display: inline-block;
+      margin: 0 5px 5px 0;
+      padding: 10px 20px;
+      width: 160px; }
+      .container .scale-list .scale-list-item.selected {
+        background-color: aquamarine; }
+  .container .code-list {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px; }
+    .container .code-list .code-list-item {
+      background-color: antiquewhite;
+      border-radius: 50%;
+      box-sizing: border-box;
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      text-align: center;
+      width: 50px; }
+      .container .code-list .code-list-item.selected {
+        background-color: aquamarine; }
 
 /*# sourceMappingURL=app.component.css.map */
