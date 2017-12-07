@@ -17,7 +17,14 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.css":
+/***/ "../../../../../src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\"><div class=\"gt\"><div class=\"gt-neck\"><div class=\"gt-string gt-string-list-item--{{ i + 1}}\" *ngFor=\"let gtString of gtStringSeq; let i = index\"><div class=\"step\" *ngFor=\"let step of gtString\"><div class=\"label\" [class.active]=\"getLabel(step)\" [class.root]=\"step == selectedTone.step\" [class.fifth]=\"step == selectedTone.step + 7\" [class.highlight]=\"selectedStepSet.has((12 + step - selectedTone.step) % 12)\">{{ getLabel(step) }}</div></div></div></div></div><mat-card><div class=\"step-list\"><button class=\"step-list-item\" mat-raised-button=\"mat-raised-button\" *ngFor=\"let step of stepSeq\" (click)=\"onSelectStep(step)\" [class.hidden]=\"!selectedScale.stepSeq.includes(step.step)\" [class.selected]=\"selectedStepSet.has(step.step)\"> {{ step.name }}</button></div><div class=\"mode-selector\"><mat-slide-toggle [checked]=\"useTone\" (change)=\"useTone = $event.checked\"></mat-slide-toggle></div></mat-card><mat-card><div class=\"tone-list\"><button class=\"tone-list-item\" mat-fab=\"mat-fab\" *ngFor=\"let tone of toneSeq\" (click)=\"selectedTone = tone\" [class.selected]=\"tone == selectedTone\"> {{ tone.name }}</button></div></mat-card><mat-card><div class=\"scale-list\"><button class=\"scale-list-item\" mat-raised-button=\"mat-raised-button\" *ngFor=\"let scale of scaleSeq\" (click)=\"selectedScale = scale\" [class.selected]=\"scale == selectedScale\">{{ scale.name }}</button></div><div class=\"code-list\"><button class=\"code-list-item\" mat-fab=\"mat-fab\" *ngFor=\"let code of codeSeq\" (click)=\"selectedScale = code\" [class.selected]=\"code == selectedScale\">{{ code.name }}</button></div></mat-card></div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -25,7 +32,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.container {\n  font-family: -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", \"Segoe UI\",\"Noto Sans Japanese\",\"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   ProN W3\", Meiryo, sans-serif;\n  font-size: 12px;\n  padding: 30px; }\n  .container .gt {\n    margin-bottom: 30px; }\n    .container .gt .gt-neck {\n      display: table;\n      border-collapse: collapse; }\n      .container .gt .gt-neck .gt-string {\n        display: table-row;\n        border-collapse: collapse;\n        /** fret */ }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(4),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(6),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(8),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(10),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(16),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(18),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(20),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(22) {\n          background-color: antiquewhite; }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(13),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(25) {\n          background-color: aquamarine; }\n        .container .gt .gt-neck .gt-string:last-child .step {\n          border-color: transparent !important; }\n        .container .gt .gt-neck .gt-string .step {\n          border: 1px solid;\n          border-collapse: collapse;\n          box-sizing: border-box;\n          display: table-cell;\n          height: 30px;\n          position: relative;\n          min-width: 60px;\n          width: 60px; }\n          .container .gt .gt-neck .gt-string .step:first-child {\n            border-width: 0 10px 0 0; }\n          .container .gt .gt-neck .gt-string .step .label {\n            border-radius: 50%;\n            color: white;\n            font-size: 12px;\n            height: 20px;\n            line-height: 20px;\n            position: absolute;\n            right: 10px;\n            text-align: center;\n            top: -10px;\n            width: 20px; }\n            .container .gt .gt-neck .gt-string .step .label.active {\n              background-color: black; }\n              .container .gt .gt-neck .gt-string .step .label.active.root {\n                background-color: brown; }\n              .container .gt .gt-neck .gt-string .step .label.active.fifth {\n                background-color: chocolate; }\n  .container .tone-list {\n    margin-bottom: 30px; }\n    .container .tone-list .tone-list-item {\n      background-color: antiquewhite;\n      border-radius: 50%;\n      display: inline-block;\n      height: 50px;\n      line-height: 50px;\n      text-align: center;\n      width: 50px; }\n      .container .tone-list .tone-list-item.selected {\n        background-color: aquamarine; }\n      .container .tone-list .tone-list-item:not(:first-child) {\n        margin-left: 10px; }\n  .container .scale-list {\n    display: inline-block;\n    vertical-align: top;\n    width: 360px; }\n    .container .scale-list .scale-list-item {\n      background-color: antiquewhite;\n      border-radius: 5px;\n      box-sizing: border-box;\n      display: inline-block;\n      margin: 0 5px 5px 0;\n      padding: 10px 20px;\n      width: 160px; }\n      .container .scale-list .scale-list-item.selected {\n        background-color: aquamarine; }\n  .container .code-list {\n    display: inline-block;\n    vertical-align: top;\n    width: 400px; }\n    .container .code-list .code-list-item {\n      background-color: antiquewhite;\n      border-radius: 50%;\n      box-sizing: border-box;\n      display: inline-block;\n      height: 50px;\n      line-height: 50px;\n      margin-bottom: 10px;\n      margin-right: 10px;\n      text-align: center;\n      width: 50px; }\n      .container .code-list .code-list-item.selected {\n        background-color: aquamarine; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between mat-menu and mat-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n.container {\n  font-family: -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", \"Segoe UI\",\"Noto Sans Japanese\",\"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   ProN W3\", Meiryo, sans-serif;\n  font-size: 12px;\n  margin: auto;\n  width: 1024px; }\n  .container .gt {\n    margin: 30px 0 0; }\n    .container .gt .gt-neck {\n      display: table;\n      border-collapse: collapse; }\n      .container .gt .gt-neck .gt-string {\n        display: table-row;\n        border-collapse: collapse;\n        /** fret */ }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(4),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(6),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(8),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(10),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(16),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(18),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(20),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(22) {\n          background-color: #d7ccc8; }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(13),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(25) {\n          background-color: #a1887f; }\n        .container .gt .gt-neck .gt-string:last-child .step {\n          border-color: transparent !important; }\n        .container .gt .gt-neck .gt-string .step {\n          border: 1px solid #263238;\n          border-collapse: collapse;\n          box-sizing: border-box;\n          display: table-cell;\n          height: 30px;\n          position: relative;\n          min-width: 45px;\n          width: 45px; }\n          .container .gt .gt-neck .gt-string .step:first-child {\n            border-width: 0 10px 0 0; }\n          .container .gt .gt-neck .gt-string .step .label {\n            border-radius: 50%;\n            font-size: 12px;\n            height: 20px;\n            line-height: 20px;\n            position: absolute;\n            right: 5px;\n            text-align: center;\n            top: -10px;\n            width: 20px; }\n            .container .gt .gt-neck .gt-string .step .label.active {\n              background-color: white;\n              border: 1px solid #3e2723; }\n              .container .gt .gt-neck .gt-string .step .label.active.highlight {\n                background-color: #3e2723;\n                color: white; }\n  .container .step-list {\n    display: inline-block; }\n    .container .step-list .step-list-item {\n      background-color: #d7ccc8;\n      border-radius: 50px;\n      height: 25px;\n      line-height: 25px;\n      min-width: 60px;\n      padding: 0; }\n      .container .step-list .step-list-item.hidden {\n        display: none; }\n      .container .step-list .step-list-item.selected {\n        background-color: #795548;\n        color: white; }\n      .container .step-list .step-list-item:not(:first-child) {\n        margin-left: 5px; }\n  .container .mode-selector {\n    display: inline-block;\n    position: absolute;\n    right: 24px; }\n  .container .tone-list .tone-list-item {\n    background-color: #d7ccc8; }\n    .container .tone-list .tone-list-item.selected {\n      background-color: #795548;\n      color: white; }\n    .container .tone-list .tone-list-item:not(:first-child) {\n      margin-left: 10px; }\n  .container .scale-list {\n    display: inline-block;\n    text-align: center;\n    vertical-align: top;\n    width: 396px; }\n    .container .scale-list .scale-list-item {\n      background-color: #d7ccc8;\n      margin: 0 5px 5px 0;\n      width: 160px; }\n      .container .scale-list .scale-list-item.selected {\n        background-color: #795548;\n        color: white; }\n  .container .code-list {\n    display: inline-block;\n    vertical-align: top;\n    width: 400px; }\n    .container .code-list .code-list-item {\n      background-color: #d7ccc8;\n      margin-bottom: 10px;\n      margin-right: 10px; }\n      .container .code-list .code-list-item.selected {\n        background-color: #795548;\n        color: white; }\n  .container .mat-card {\n    box-sizing: border-box;\n    margin: 0 auto;\n    text-align: center;\n    width: 880px; }\n    .container .mat-card:not(:last-child) {\n      margin-bottom: 20px; }\n", ""]);
 
 // exports
 
@@ -35,21 +42,15 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\"><div class=\"gt\"><div class=\"gt-neck\"><div class=\"gt-string gt-string-list-item--{{ i + 1}}\" *ngFor=\"let gtString of gtStringSeq; let i = index\"><div class=\"step\" *ngFor=\"let step of gtString\"><div class=\"label\" [class.active]=\"getLabel(step)\" [class.root]=\"step == selectedTone.step\" [class.fifth]=\"step == selectedTone.step + 7\">{{ getLabel(step) }}</div></div></div></div></div><div class=\"tone-list\"><div class=\"tone-list-item\" *ngFor=\"let tone of toneSeq\" (click)=\"selectedTone = tone\" [class.selected]=\"tone == selectedTone\"><div class=\"label\">{{ tone.name }}</div></div></div><div class=\"scale-list\"><div class=\"scale-list-item\" *ngFor=\"let scale of scaleSeq\" (click)=\"selectedScale = scale\" [class.selected]=\"scale == selectedScale\"><div class=\"label\">{{ scale.name }}</div></div></div><div class=\"code-list\"><div class=\"code-list-item\" *ngFor=\"let code of codeSeq\" (click)=\"selectedScale = code\" [class.selected]=\"code == selectedScale\"><div class=\"label\">{{ code.name }}</div></div></div></div>"
-
-/***/ }),
-
 /***/ "../../../../../src/app/app.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tone__ = __webpack_require__("../../../../../src/app/tone.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scale__ = __webpack_require__("../../../../../src/app/scale.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scale__ = __webpack_require__("../../../../../src/app/scale.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__step__ = __webpack_require__("../../../../../src/app/step.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tone__ = __webpack_require__("../../../../../src/app/tone.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,13 +60,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var AppComponent = (function () {
     function AppComponent() {
-        this.toneSeq = __WEBPACK_IMPORTED_MODULE_1__tone__["a" /* Tone */].all;
-        this.scaleSeq = __WEBPACK_IMPORTED_MODULE_2__scale__["a" /* Scale */].allScale;
-        this.codeSeq = __WEBPACK_IMPORTED_MODULE_2__scale__["a" /* Scale */].allCode;
-        this.selectedTone = null;
-        this.selectedScale = null;
+        this.useTone = false;
+        this.stepSeq = __WEBPACK_IMPORTED_MODULE_2__step__["a" /* Step */].all;
+        this.toneSeq = __WEBPACK_IMPORTED_MODULE_3__tone__["a" /* Tone */].all;
+        this.scaleSeq = __WEBPACK_IMPORTED_MODULE_1__scale__["a" /* Scale */].allScale;
+        this.codeSeq = __WEBPACK_IMPORTED_MODULE_1__scale__["a" /* Scale */].allCode;
+        this.selectedTone = this.toneSeq[3];
+        this.selectedScale = this.scaleSeq[0];
+        this.selectedStepSet = new Set([0]);
         this.fretCount = 22;
         this.gtStringSeq = [
             /** 1st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 7) % 12; }),
@@ -76,29 +81,39 @@ var AppComponent = (function () {
             /** 6st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 7) % 12; }),
         ];
     }
-    AppComponent.prototype.ngOnInit = function () {
-        this.selectedTone = this.toneSeq[3];
-        this.selectedScale = this.scaleSeq[0];
-    };
     AppComponent.prototype.getLabel = function (step) {
         var v = (12 + step - this.selectedTone.step) % 12;
         if (this.selectedScale.stepSeq.includes(v)) {
-            if (__WEBPACK_IMPORTED_MODULE_1__tone__["a" /* Tone */].skeys.includes(this.selectedTone.step)) {
-                return __WEBPACK_IMPORTED_MODULE_1__tone__["a" /* Tone */].smap[step];
-            }
-            else {
-                return __WEBPACK_IMPORTED_MODULE_1__tone__["a" /* Tone */].fmap[step];
-            }
+            return this.useTone ? this.getToneLabel(step) : this.getStepLabel(v);
         }
         else {
             return null;
+        }
+    };
+    AppComponent.prototype.getStepLabel = function (step) {
+        return __WEBPACK_IMPORTED_MODULE_2__step__["a" /* Step */].map[step];
+    };
+    AppComponent.prototype.getToneLabel = function (step) {
+        if (__WEBPACK_IMPORTED_MODULE_3__tone__["a" /* Tone */].skeys.includes(this.selectedTone.step)) {
+            return __WEBPACK_IMPORTED_MODULE_3__tone__["a" /* Tone */].smap[step];
+        }
+        else {
+            return __WEBPACK_IMPORTED_MODULE_3__tone__["a" /* Tone */].fmap[step];
+        }
+    };
+    AppComponent.prototype.onSelectStep = function (step) {
+        if (this.selectedStepSet.has(step.step)) {
+            this.selectedStepSet.delete(step.step);
+        }
+        else {
+            this.selectedStepSet.add(step.step);
         }
     };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
         })
     ], AppComponent);
     return AppComponent;
@@ -116,6 +131,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__ = __webpack_require__("../../../platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -125,16 +142,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["E" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["H" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */]
+                __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_material__["c" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_material__["b" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_material__["a" /* MatButtonModule */],
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
@@ -257,6 +280,46 @@ var Scale;
 
 /***/ }),
 
+/***/ "../../../../../src/app/step.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Step; });
+var Step;
+(function (Step) {
+    Step.all = [
+        { name: 'T', step: 0 },
+        { name: 'm2', step: 1 },
+        { name: 'M2', step: 2 },
+        { name: 'm3', step: 3 },
+        { name: 'M3', step: 4 },
+        { name: 'P4', step: 5 },
+        { name: '♯4', step: 6 },
+        { name: 'P5', step: 7 },
+        { name: 'm6', step: 8 },
+        { name: 'M6', step: 9 },
+        { name: 'm7', step: 10 },
+        { name: 'M7', step: 11 },
+    ];
+    Step.map = {
+        0: 'T',
+        1: 'm2',
+        2: 'M2',
+        3: 'm3',
+        4: 'M3',
+        5: 'P4',
+        6: '♯4',
+        7: 'P5',
+        8: 'm6',
+        9: 'M6',
+        10: 'm7',
+        11: 'M7',
+    };
+})(Step || (Step = {}));
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/tone.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -338,12 +401,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__("../../../platform-browser-dynamic/esm5/platform-browser-dynamic.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__("../../../../../src/app/app.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hammerjs__ = __webpack_require__("../../../../hammerjs/hammer.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_hammerjs__);
+
 
 
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_12" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
