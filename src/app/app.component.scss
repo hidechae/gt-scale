@@ -1,10 +1,13 @@
+@import '~@angular/material/theming';
+
 .container {
   font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   font-size: 12px;
-  padding: 30px;
+  margin: auto;
+  width: 1024px;
 
   .gt {
-    margin-bottom: 30px;
+    margin: 30px 0 0;
 
     .gt-neck {
       display: table;
@@ -25,11 +28,11 @@
           .step:nth-child(20),
           .step:nth-child(22)
           {
-            background-color: antiquewhite;
+            background-color: map_get($mat-brown, 100);
           }
           .step:nth-child(13),
           .step:nth-child(25) {
-            background-color: aquamarine;
+            background-color: map_get($mat-brown, 300);
           }
         }
 
@@ -38,14 +41,14 @@
         }
 
         .step {
-          border: 1px solid;
+          border: 1px solid map_get($mat-blue-grey, 900);
           border-collapse: collapse;
           box-sizing: border-box;
           display: table-cell;
           height: 30px;
           position: relative;
-          min-width: 60px;
-          width: 60px;
+          min-width: 45px;
+          width: 45px;
 
           &:first-child {
             border-width: 0 10px 0 0;
@@ -53,24 +56,22 @@
 
           .label {
             border-radius: 50%;
-            color: white;
             font-size: 12px;
             height: 20px;
             line-height: 20px;
             position: absolute;
-            right: 10px;
+            right: 5px;
             text-align: center;
             top: -10px;
             width: 20px;
 
             &.active {
-              background-color: black;
+              background-color: white;
+              border: 1px solid map_get($mat-brown, 900);
 
-              &.root {
-                background-color: brown;
-              }
-              &.fifth {
-                background-color: chocolate;
+              &.highlight {
+                background-color: map_get($mat-brown, 900);
+                color: white;
               }
             }
           }
@@ -79,20 +80,45 @@
     }
   }
 
-  .tone-list {
-    margin-bottom: 30px;
+  .step-list {
+    display: inline-block;
 
-    .tone-list-item {
-      background-color: antiquewhite;
-      border-radius: 50%;
-      display: inline-block;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      width: 50px;
+    .step-list-item {
+      background-color: map_get($mat-brown, 100);
+      border-radius: 50px;
+      height: 25px;
+      line-height: 25px;
+      min-width: 60px;
+      padding: 0;
+
+      &.hidden {
+        display: none;
+      }
 
       &.selected {
-        background-color: aquamarine;
+        background-color: map_get($mat-brown, 500);
+        color: white;
+      }
+
+      &:not(:first-child) {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .mode-selector {
+    display: inline-block;
+    position: absolute;
+    right: 24px;
+  }
+
+  .tone-list {
+    .tone-list-item {
+      background-color: map_get($mat-brown, 100);
+
+      &.selected {
+        background-color: map_get($mat-brown, 500);
+        color: white;
       }
 
       &:not(:first-child) {
@@ -103,20 +129,18 @@
 
   .scale-list {
     display: inline-block;
+    text-align: center;
     vertical-align: top;
-    width: 360px;
+    width: 396px;
 
     .scale-list-item {
-      background-color: antiquewhite;
-      border-radius: 5px;
-      box-sizing: border-box;
-      display: inline-block;
+      background-color: map_get($mat-brown, 100);
       margin: 0 5px 5px 0;
-      padding: 10px 20px;
       width: 160px;
 
       &.selected {
-        background-color: aquamarine;
+        background-color: map_get($mat-brown, 500);
+        color: white;
       }
     }
   }
@@ -127,20 +151,25 @@
     width: 400px;
 
     .code-list-item {
-      background-color: antiquewhite;
-      border-radius: 50%;
-      box-sizing: border-box;
-      display: inline-block;
-      height: 50px;
-      line-height: 50px;
+      background-color: map_get($mat-brown, 100);
       margin-bottom: 10px;
       margin-right: 10px;
-      text-align: center;
-      width: 50px;
 
       &.selected {
-        background-color: aquamarine;
+        background-color: map_get($mat-brown, 500);
+        color: white;
       }
+    }
+  }
+
+  .mat-card {
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+    width: 880px;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
     }
   }
 }

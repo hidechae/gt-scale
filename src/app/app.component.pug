@@ -7,31 +7,42 @@
       )
         .step(*ngFor="let step of gtString")
           .label(
-            [class.active] = "getLabel(step)",
-            [class.root]   = "step == selectedTone.step",
-            [class.fifth]  = "step == selectedTone.step + 7"
+            [class.active]    = "getLabel(step)",
+            [class.root]      = "step == selectedTone.step",
+            [class.fifth]     = "step == selectedTone.step + 7",
+            [class.highlight] = "selectedStepSet.has((12 + step - selectedTone.step) % 12)"
           ) {{ getLabel(step) }}
 
-  .tone-list
-    .tone-list-item(
-      *ngFor  = "let tone of toneSeq",
-      (click) = "selectedTone = tone",
-      [class.selected] = "tone == selectedTone"
-    )
-      .label {{ tone.name }}
+  mat-card
+    .step-list
+      button.step-list-item(mat-raised-button,
+        *ngFor           = "let step of stepSeq",
+        (click)          = "onSelectStep(step)",
+        [class.hidden]   = "!selectedScale.stepSeq.includes(step.step)",
+        [class.selected] = "selectedStepSet.has(step.step)"
+      )  {{ step.name }}
+    .mode-selector
+      mat-slide-toggle([checked]="useTone", (change)="useTone = $event.checked")
 
-  .scale-list
-    .scale-list-item(
-      *ngFor  = "let scale of scaleSeq",
-      (click) = "selectedScale = scale",
-      [class.selected] = "scale == selectedScale"
-    )
-      .label {{ scale.name }}
+  mat-card
+    .tone-list
+      button.tone-list-item(mat-fab,
+        *ngFor           = "let tone of toneSeq",
+        (click)          = "selectedTone = tone",
+        [class.selected] = "tone == selectedTone"
+      )  {{ tone.name }}
 
-  .code-list
-    .code-list-item(
-    *ngFor  = "let code of codeSeq",
-    (click) = "selectedScale = code",
-    [class.selected] = "code == selectedScale"
-    )
-      .label {{ code.name }}
+  mat-card
+    .scale-list
+      button.scale-list-item(mat-raised-button,
+        *ngFor           = "let scale of scaleSeq",
+        (click)          = "selectedScale = scale",
+        [class.selected] = "scale == selectedScale"
+      ) {{ scale.name }}
+
+    .code-list
+      button.code-list-item(mat-fab,
+        *ngFor           = "let code of codeSeq",
+        (click)          = "selectedScale = code",
+        [class.selected] = "code == selectedScale"
+      ) {{ code.name }}
