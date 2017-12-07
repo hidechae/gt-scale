@@ -1,5 +1,7 @@
 # GtScale
 
+This is [Guitar Scale Viewer](https://hidechae.github.io/gt-scale/).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
 
 ## Development server
