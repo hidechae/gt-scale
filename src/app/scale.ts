@@ -18,17 +18,38 @@ export module Scale {
     name   : 'Melodic Minor',
     stepSeq: [0, 2, 3, 5, 7, 9, 11]
   }, {
+    name   : 'Ionian',
+    stepSeq: [0, 2, 4, 5, 7, 9, 11]
+  }, {
+    name   : 'Dorian',
+    stepSeq: [0, 2, 3, 5, 7, 9, 10]
+  }, {
+    name   : 'Phrigian',
+    stepSeq: [0, 1, 3, 5, 7, 8, 10]
+  }, {
+    name   : 'Lydian',
+    stepSeq: [0, 2, 4, 6, 7, 9, 11]
+  }, {
+    name   : 'Mixolydian',
+    stepSeq: [0, 2, 4, 5, 7, 9, 10]
+  }, {
+    name   : 'Aeolian',
+    stepSeq: [0, 2, 3, 5, 7, 8, 10]
+  }, {
+    name   : 'Locrian',
+    stepSeq: [0, 1, 3, 5, 6, 8, 10]
+  }, {
     name   : 'Major Pentatonic',
     stepSeq: [0, 2, 4, 7, 9]
   }, {
     name   : 'Minor Pentatonic',
     stepSeq: [0, 3, 5, 7, 10]
   }, {
-    name   : 'Ionian',
-    stepSeq: [0, 2, 4, 5, 7, 9, 11]
+    name   : 'Major Blues',
+    stepSeq: [0, 2, 3, 4, 7, 9]
   }, {
-    name   : 'Dorian',
-    stepSeq: [0, 2, 3, 5, 7, 9, 10]
+    name   : 'Minor Blues',
+    stepSeq: [0, 3, 5, 6, 7, 10]
   }]
 
   export const allCode: T[] = [{

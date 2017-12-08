@@ -145,12 +145,12 @@
     display: inline-block;
     text-align: center;
     vertical-align: top;
-    width: 396px;
+    width: 500px;
 
     .scale-list-item {
       background-color: map_get($mat-brown, 100);
       margin: 0 5px 5px 0;
-      width: 160px;
+      width: 145px;
 
       &.selected {
         background-color: map_get($mat-brown, 500);
@@ -180,10 +180,10 @@
     box-sizing: border-box;
     margin: 0 auto;
     text-align: center;
-    width: 880px;
+    width: 960px;
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
   }
 }
