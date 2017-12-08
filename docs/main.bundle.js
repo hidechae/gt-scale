@@ -20,7 +20,7 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\"><div class=\"gt\"><div class=\"gt-neck\"><div class=\"gt-string gt-string-list-item--{{ i + 1}}\" *ngFor=\"let gtString of gtStringSeq; let i = index\"><div class=\"step\" *ngFor=\"let step of gtString\"><div class=\"label\" [class.active]=\"getLabel(step)\" [class.root]=\"step == selectedTone.step\" [class.fifth]=\"step == selectedTone.step + 7\" [class.highlight]=\"selectedStepSet.has((12 + step - selectedTone.step) % 12)\">{{ getLabel(step) }}</div></div></div></div></div><mat-card><div class=\"step-list\"><button class=\"step-list-item\" mat-raised-button=\"mat-raised-button\" *ngFor=\"let step of stepSeq\" (click)=\"onSelectStep(step)\" [class.hidden]=\"!selectedScale.stepSeq.includes(step.step)\" [class.selected]=\"selectedStepSet.has(step.step)\"> {{ step.name }}</button></div><div class=\"mode-selector\"><mat-slide-toggle [checked]=\"useTone\" (change)=\"useTone = $event.checked\"></mat-slide-toggle></div></mat-card><mat-card><div class=\"tone-list\"><button class=\"tone-list-item\" mat-fab=\"mat-fab\" *ngFor=\"let tone of toneSeq\" (click)=\"selectedTone = tone\" [class.selected]=\"tone == selectedTone\"> {{ tone.name }}</button></div></mat-card><mat-card><div class=\"scale-list\"><button class=\"scale-list-item\" mat-raised-button=\"mat-raised-button\" *ngFor=\"let scale of scaleSeq\" (click)=\"selectedScale = scale\" [class.selected]=\"scale == selectedScale\">{{ scale.name }}</button></div><div class=\"code-list\"><button class=\"code-list-item\" mat-fab=\"mat-fab\" *ngFor=\"let code of codeSeq\" (click)=\"selectedScale = code\" [class.selected]=\"code == selectedScale\">{{ code.name }}</button></div></mat-card></div>"
+module.exports = "<div class=\"container\"><div class=\"gt\"><div class=\"gt-neck\"><div class=\"gt-string\" *ngFor=\"let gtString of selectedGt\"><div class=\"step\" *ngFor=\"let step of gtString\"><div class=\"label\" [class.active]=\"getLabel(step)\" [class.highlight]=\"selectedStepSet.has((12 + step - selectedTone.step) % 12)\">{{ getLabel(step) }}</div></div></div></div></div><mat-card><div class=\"gt-selector\"><mat-form-field><mat-select [(value)]=\"selectedGt\"><mat-option *ngFor=\"let option of gtOptions\" [value]=\"option.value\">{{ option.viewValue }}</mat-option></mat-select></mat-form-field></div><div class=\"step-list\"><button class=\"step-list-item\" mat-raised-button=\"mat-raised-button\" *ngFor=\"let step of stepSeq\" (click)=\"onSelectStep(step)\" [class.hidden]=\"!selectedScale.stepSeq.includes(step.step)\" [class.selected]=\"selectedStepSet.has(step.step)\"> {{ step.name }}</button></div><div class=\"mode-selector\"><mat-slide-toggle [checked]=\"useTone\" (change)=\"useTone = $event.checked\"></mat-slide-toggle></div></mat-card><mat-card><div class=\"tone-list\"><button class=\"tone-list-item\" mat-fab=\"mat-fab\" *ngFor=\"let tone of toneSeq\" (click)=\"selectedTone = tone\" [class.selected]=\"tone == selectedTone\"> {{ tone.name }}</button></div></mat-card><mat-card><div class=\"scale-list\"><button class=\"scale-list-item\" mat-raised-button=\"mat-raised-button\" *ngFor=\"let scale of scaleSeq\" (click)=\"selectedScale = scale\" [class.selected]=\"scale == selectedScale\">{{ scale.name }}</button></div><div class=\"code-list\"><button class=\"code-list-item\" mat-fab=\"mat-fab\" *ngFor=\"let code of codeSeq\" (click)=\"selectedScale = code\" [class.selected]=\"code == selectedScale\">{{ code.name }}</button></div></mat-card></div>"
 
 /***/ }),
 
@@ -32,7 +32,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between mat-menu and mat-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n.container {\n  font-family: -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", \"Segoe UI\",\"Noto Sans Japanese\",\"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   ProN W3\", Meiryo, sans-serif;\n  font-size: 12px;\n  margin: auto;\n  width: 1024px; }\n  .container .gt {\n    margin: 30px 0 0; }\n    .container .gt .gt-neck {\n      display: table;\n      border-collapse: collapse; }\n      .container .gt .gt-neck .gt-string {\n        display: table-row;\n        border-collapse: collapse;\n        /** fret */ }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(4),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(6),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(8),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(10),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(16),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(18),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(20),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(22) {\n          background-color: #d7ccc8; }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(13),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(25) {\n          background-color: #a1887f; }\n        .container .gt .gt-neck .gt-string:last-child .step {\n          border-color: transparent !important; }\n        .container .gt .gt-neck .gt-string .step {\n          border: 1px solid #263238;\n          border-collapse: collapse;\n          box-sizing: border-box;\n          display: table-cell;\n          height: 30px;\n          position: relative;\n          min-width: 45px;\n          width: 45px; }\n          .container .gt .gt-neck .gt-string .step:first-child {\n            border-width: 0 10px 0 0; }\n          .container .gt .gt-neck .gt-string .step .label {\n            border-radius: 50%;\n            font-size: 12px;\n            height: 20px;\n            line-height: 20px;\n            position: absolute;\n            right: 5px;\n            text-align: center;\n            top: -10px;\n            width: 20px; }\n            .container .gt .gt-neck .gt-string .step .label.active {\n              background-color: white;\n              border: 1px solid #3e2723; }\n              .container .gt .gt-neck .gt-string .step .label.active.highlight {\n                background-color: #3e2723;\n                color: white; }\n  .container .step-list {\n    display: inline-block; }\n    .container .step-list .step-list-item {\n      background-color: #d7ccc8;\n      border-radius: 50px;\n      height: 25px;\n      line-height: 25px;\n      min-width: 60px;\n      padding: 0; }\n      .container .step-list .step-list-item.hidden {\n        display: none; }\n      .container .step-list .step-list-item.selected {\n        background-color: #795548;\n        color: white; }\n      .container .step-list .step-list-item:not(:first-child) {\n        margin-left: 5px; }\n  .container .mode-selector {\n    display: inline-block;\n    position: absolute;\n    right: 24px; }\n  .container .tone-list .tone-list-item {\n    background-color: #d7ccc8; }\n    .container .tone-list .tone-list-item.selected {\n      background-color: #795548;\n      color: white; }\n    .container .tone-list .tone-list-item:not(:first-child) {\n      margin-left: 10px; }\n  .container .scale-list {\n    display: inline-block;\n    text-align: center;\n    vertical-align: top;\n    width: 396px; }\n    .container .scale-list .scale-list-item {\n      background-color: #d7ccc8;\n      margin: 0 5px 5px 0;\n      width: 160px; }\n      .container .scale-list .scale-list-item.selected {\n        background-color: #795548;\n        color: white; }\n  .container .code-list {\n    display: inline-block;\n    vertical-align: top;\n    width: 400px; }\n    .container .code-list .code-list-item {\n      background-color: #d7ccc8;\n      margin-bottom: 10px;\n      margin-right: 10px; }\n      .container .code-list .code-list-item.selected {\n        background-color: #795548;\n        color: white; }\n  .container .mat-card {\n    box-sizing: border-box;\n    margin: 0 auto;\n    text-align: center;\n    width: 880px; }\n    .container .mat-card:not(:last-child) {\n      margin-bottom: 20px; }\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/** The mixins below are shared between mat-menu and mat-select */\n/**\n * This mixin adds the correct panel transform styles based\n * on the direction that the menu panel opens.\n */\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n/**\n * This mixin contains shared option styles between the select and\n * autocomplete components.\n */\n.container {\n  font-family: -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", \"Segoe UI\",\"Noto Sans Japanese\",\"\\30D2\\30E9\\30AE\\30CE\\89D2\\30B4   ProN W3\", Meiryo, sans-serif;\n  font-size: 12px;\n  margin: auto;\n  width: 1024px; }\n  .container .gt {\n    margin: 30px 0 0; }\n    .container .gt .gt-neck {\n      display: table;\n      border-collapse: collapse; }\n      .container .gt .gt-neck .gt-string {\n        display: table-row;\n        border-collapse: collapse;\n        /** fret */ }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(4),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(6),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(8),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(10),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(16),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(18),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(20),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(22) {\n          background-color: #d7ccc8; }\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(13),\n        .container .gt .gt-neck .gt-string:not(:last-child) .step:nth-child(25) {\n          background-color: #a1887f; }\n        .container .gt .gt-neck .gt-string:last-child .step {\n          border-color: transparent !important; }\n        .container .gt .gt-neck .gt-string .step {\n          border: 1px solid #263238;\n          border-collapse: collapse;\n          box-sizing: border-box;\n          display: table-cell;\n          height: 30px;\n          position: relative;\n          min-width: 45px;\n          width: 45px; }\n          .container .gt .gt-neck .gt-string .step:first-child {\n            border-width: 0 10px 0 0; }\n          .container .gt .gt-neck .gt-string .step .label {\n            border-radius: 50%;\n            font-size: 12px;\n            height: 20px;\n            line-height: 20px;\n            position: absolute;\n            right: 5px;\n            text-align: center;\n            top: -10px;\n            width: 20px; }\n            .container .gt .gt-neck .gt-string .step .label.active {\n              background-color: white;\n              border: 1px solid #3e2723; }\n              .container .gt .gt-neck .gt-string .step .label.active.highlight {\n                background-color: #3e2723;\n                color: white; }\n  .container .gt-selector {\n    display: inline-block;\n    position: absolute;\n    left: 24px; }\n    .container .gt-selector mat-form-field {\n      width: 120px; }\n      .container .gt-selector mat-form-field /deep/ .mat-input-infix {\n        border: 0; }\n  .container .step-list {\n    display: inline-block; }\n    .container .step-list .step-list-item {\n      background-color: #d7ccc8;\n      border-radius: 50px;\n      height: 25px;\n      line-height: 25px;\n      min-width: 60px;\n      padding: 0; }\n      .container .step-list .step-list-item.hidden {\n        display: none; }\n      .container .step-list .step-list-item.selected {\n        background-color: #795548;\n        color: white; }\n      .container .step-list .step-list-item:not(:first-child) {\n        margin-left: 5px; }\n  .container .mode-selector {\n    display: inline-block;\n    position: absolute;\n    right: 24px; }\n  .container .tone-list .tone-list-item {\n    background-color: #d7ccc8; }\n    .container .tone-list .tone-list-item.selected {\n      background-color: #795548;\n      color: white; }\n    .container .tone-list .tone-list-item:not(:first-child) {\n      margin-left: 10px; }\n  .container .scale-list {\n    display: inline-block;\n    text-align: center;\n    vertical-align: top;\n    width: 500px; }\n    .container .scale-list .scale-list-item {\n      background-color: #d7ccc8;\n      margin: 0 5px 5px 0;\n      width: 145px; }\n      .container .scale-list .scale-list-item.selected {\n        background-color: #795548;\n        color: white; }\n  .container .code-list {\n    display: inline-block;\n    vertical-align: top;\n    width: 400px; }\n    .container .code-list .code-list-item {\n      background-color: #d7ccc8;\n      margin-bottom: 10px;\n      margin-right: 10px; }\n      .container .code-list .code-list-item.selected {\n        background-color: #795548;\n        color: white; }\n  .container .mat-card {\n    box-sizing: border-box;\n    margin: 0 auto;\n    text-align: center;\n    width: 960px; }\n    .container .mat-card:not(:last-child) {\n      margin-bottom: 10px; }\n", ""]);
 
 // exports
 
@@ -51,12 +51,14 @@ module.exports = module.exports.toString();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scale__ = __webpack_require__("../../../../../src/app/scale.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__step__ = __webpack_require__("../../../../../src/app/step.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tone__ = __webpack_require__("../../../../../src/app/tone.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__guitar__ = __webpack_require__("../../../../../src/app/guitar.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -71,16 +73,13 @@ var AppComponent = (function () {
         this.selectedTone = this.toneSeq[3];
         this.selectedScale = this.scaleSeq[0];
         this.selectedStepSet = new Set([0]);
-        this.fretCount = 22;
-        this.gtStringSeq = [
-            /** 1st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 7) % 12; }),
-            /** 2st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 2) % 12; }),
-            /** 3st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 10) % 12; }),
-            /** 4st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 5) % 12; }),
-            /** 5st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return i % 12; }),
-            /** 6st */ Array.apply(null, new Array(this.fretCount)).map(function (_, i) { return (i + 7) % 12; }),
-        ];
+        this.selectedGt = __WEBPACK_IMPORTED_MODULE_4__guitar__["a" /* Guitar */].gt;
+        this.gtOptions = __WEBPACK_IMPORTED_MODULE_4__guitar__["a" /* Guitar */].options;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        console.log(this.selectedGt);
+        console.log(this.gtOptions[0]);
+    };
     AppComponent.prototype.getLabel = function (step) {
         var v = (12 + step - this.selectedTone.step) % 12;
         if (this.selectedScale.stepSeq.includes(v)) {
@@ -155,7 +154,8 @@ var AppModule = (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_material__["c" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_material__["c" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_material__["d" /* MatSlideToggleModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["b" /* MatCardModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["a" /* MatButtonModule */],
             ],
@@ -166,6 +166,75 @@ var AppModule = (function () {
     return AppModule;
 }());
 
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/guitar.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Guitar; });
+var Guitar;
+(function (Guitar) {
+    var fretCount = 22;
+    Guitar.gt = [
+        /** 1st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 2st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+        /** 3st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 10) % 12; }),
+        /** 4st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 5) % 12; }),
+        /** 5st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return i % 12; }),
+        /** 6st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+    ];
+    Guitar.gt7 = [
+        /** 1st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 2st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+        /** 3st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 10) % 12; }),
+        /** 4st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 5) % 12; }),
+        /** 5st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return i % 12; }),
+        /** 6st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 7st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+    ];
+    Guitar.gt8 = [
+        /** 1st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 2st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+        /** 3st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 10) % 12; }),
+        /** 4st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 5) % 12; }),
+        /** 5st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return i % 12; }),
+        /** 6st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 7st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+        /** 8st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 9) % 12; }),
+    ];
+    Guitar.ba = [
+        /** 1st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 10) % 12; }),
+        /** 2st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 5) % 12; }),
+        /** 3st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return i % 12; }),
+        /** 4st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+    ];
+    Guitar.ba5 = [
+        /** 1st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 10) % 12; }),
+        /** 2st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 5) % 12; }),
+        /** 3st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return i % 12; }),
+        /** 4st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 5st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+    ];
+    Guitar.ba6 = [
+        /** 1st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 3) % 12; }),
+        /** 2st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 10) % 12; }),
+        /** 3st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 5) % 12; }),
+        /** 4st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return i % 12; }),
+        /** 5st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 7) % 12; }),
+        /** 6st */ Array.apply(null, new Array(fretCount)).map(function (_, i) { return (i + 2) % 12; }),
+    ];
+    Guitar.options = [
+        { value: Guitar.gt, viewValue: 'Gt. (6st.)' },
+        { value: Guitar.gt7, viewValue: 'Gt. (7st.)' },
+        { value: Guitar.gt8, viewValue: 'Gt. (8st.)' },
+        { value: Guitar.ba, viewValue: 'Ba. (4st.)' },
+        { value: Guitar.ba5, viewValue: 'Ba. (5st.)' },
+        { value: Guitar.ba6, viewValue: 'Ba. (6st.)' },
+    ];
+})(Guitar || (Guitar = {}));
 
 
 /***/ }),
@@ -190,17 +259,38 @@ var Scale;
             name: 'Melodic Minor',
             stepSeq: [0, 2, 3, 5, 7, 9, 11]
         }, {
+            name: 'Ionian',
+            stepSeq: [0, 2, 4, 5, 7, 9, 11]
+        }, {
+            name: 'Dorian',
+            stepSeq: [0, 2, 3, 5, 7, 9, 10]
+        }, {
+            name: 'Phrigian',
+            stepSeq: [0, 1, 3, 5, 7, 8, 10]
+        }, {
+            name: 'Lydian',
+            stepSeq: [0, 2, 4, 6, 7, 9, 11]
+        }, {
+            name: 'Mixolydian',
+            stepSeq: [0, 2, 4, 5, 7, 9, 10]
+        }, {
+            name: 'Aeolian',
+            stepSeq: [0, 2, 3, 5, 7, 8, 10]
+        }, {
+            name: 'Locrian',
+            stepSeq: [0, 1, 3, 5, 6, 8, 10]
+        }, {
             name: 'Major Pentatonic',
             stepSeq: [0, 2, 4, 7, 9]
         }, {
             name: 'Minor Pentatonic',
             stepSeq: [0, 3, 5, 7, 10]
         }, {
-            name: 'Ionian',
-            stepSeq: [0, 2, 4, 5, 7, 9, 11]
+            name: 'Major Blues',
+            stepSeq: [0, 2, 3, 4, 7, 9]
         }, {
-            name: 'Dorian',
-            stepSeq: [0, 2, 3, 5, 7, 9, 10]
+            name: 'Minor Blues',
+            stepSeq: [0, 3, 5, 6, 7, 10]
         }];
     Scale.allCode = [{
             name: 'M',
