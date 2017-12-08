@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule, MatCardModule, MatButtonModule } from '@angular/material'
+import { MatSelectModule, MatSlideToggleModule, MatCardModule, MatButtonModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { MatSlideToggleModule, MatCardModule, MatButtonModule } from '@angular/m
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatSelectModule,
     MatSlideToggleModule,
     MatCardModule,
     MatButtonModule,

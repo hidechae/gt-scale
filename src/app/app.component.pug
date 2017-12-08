@@ -1,19 +1,18 @@
 .container
   .gt
     .gt-neck
-      .gt-string(
-        *ngFor = "let gtString of gtStringSeq; let i = index",
-        class  = "gt-string-list-item--{{ i + 1}}"
-      )
+      .gt-string(*ngFor = "let gtString of selectedGt")
         .step(*ngFor="let step of gtString")
           .label(
             [class.active]    = "getLabel(step)",
-            [class.root]      = "step == selectedTone.step",
-            [class.fifth]     = "step == selectedTone.step + 7",
             [class.highlight] = "selectedStepSet.has((12 + step - selectedTone.step) % 12)"
           ) {{ getLabel(step) }}
 
   mat-card
+    .gt-selector
+      mat-form-field
+        mat-select([(value)]="selectedGt")
+          mat-option(*ngFor="let option of gtOptions", [value]="option.value") {{ option.viewValue }}
     .step-list
       button.step-list-item(mat-raised-button,
         *ngFor           = "let step of stepSeq",

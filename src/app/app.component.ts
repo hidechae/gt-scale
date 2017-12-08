@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Scale } from './scale'
 import { Step } from './step'
 import { Tone } from './tone'
+import { Guitar } from './guitar'
 
 @Component({
   selector   : 'app-root',
@@ -20,16 +21,14 @@ export class AppComponent {
   selectedTone:    Tone.T      = this.toneSeq[3]
   selectedScale:   Scale.T     = this.scaleSeq[0]
   selectedStepSet: Set<number> = new Set<number>([0])
+  selectedGt:      number[][]  = Guitar.gt
 
-  fretCount   = 22
-  gtStringSeq = [
-    /** 1st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 7)  % 12),
-    /** 2st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 2)  % 12),
-    /** 3st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 10) % 12),
-    /** 4st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 5)  % 12),
-    /** 5st */ Array.apply(null, new Array(this.fretCount)).map((_, i) =>  i       % 12),
-    /** 6st */ Array.apply(null, new Array(this.fretCount)).map((_, i) => (i + 7)  % 12),
-  ]
+  gtOptions = Guitar.options
+
+  ngOnInit() {
+    console.log(this.selectedGt)
+    console.log(this.gtOptions[0])
+  }
 
   getLabel(step: number): string {
     let v = (12 + step - this.selectedTone.step) % 12

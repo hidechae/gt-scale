@@ -80,6 +80,20 @@
     }
   }
 
+  .gt-selector {
+    display:  inline-block;
+    position: absolute;
+    left:     24px;
+
+    mat-form-field {
+      width: 120px;
+
+      & /deep/ .mat-input-infix {
+        border: 0;
+      }
+    }
+  }
+
   .step-list {
     display: inline-block;
 
