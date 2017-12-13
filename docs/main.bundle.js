@@ -76,10 +76,6 @@ var AppComponent = (function () {
         this.selectedGt = __WEBPACK_IMPORTED_MODULE_4__guitar__["a" /* Guitar */].gt;
         this.gtOptions = __WEBPACK_IMPORTED_MODULE_4__guitar__["a" /* Guitar */].options;
     }
-    AppComponent.prototype.ngOnInit = function () {
-        console.log(this.selectedGt);
-        console.log(this.gtOptions[0]);
-    };
     AppComponent.prototype.getLabel = function (step) {
         var v = (12 + step - this.selectedTone.step) % 12;
         if (this.selectedScale.stepSeq.includes(v)) {
