@@ -493,6 +493,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hammerjs__ = __webpack_require__("../../../../hammerjs/hammer.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_hammerjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_web_animations_js__ = __webpack_require__("../../../../web-animations-js/web-animations.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_web_animations_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_web_animations_js__);
+
 
 
 
