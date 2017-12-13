@@ -25,11 +25,6 @@ export class AppComponent {
 
   gtOptions = Guitar.options
 
-  ngOnInit() {
-    console.log(this.selectedGt)
-    console.log(this.gtOptions[0])
-  }
-
   getLabel(step: number): string {
     let v = (12 + step - this.selectedTone.step) % 12
     if (this.selectedScale.stepSeq.includes(v)) {
