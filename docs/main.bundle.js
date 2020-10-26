@@ -286,6 +286,9 @@ var Scale;
             stepSeq: [0, 3, 5, 7, 10]
         }, {
             name: 'Kumoi Pentatonic',
+            stepSeq: [0, 2, 3, 7, 9]
+        }, {
+            name: 'Minor ♭5 Pentatonic',
             stepSeq: [0, 3, 5, 6, 10]
         }, {
             name: 'Major Blues',
