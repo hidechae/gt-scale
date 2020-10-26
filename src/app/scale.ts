@@ -6,19 +6,7 @@ export module Scale {
   }
 
   export const allScale: T[] = [{
-    name   : 'Major',
-    stepSeq: [0, 2, 4, 5, 7, 9, 11]
-  }, {
-    name   : 'Minor',
-    stepSeq: [0, 2, 3, 5, 7, 8, 10]
-  }, {
-    name   : 'Harmonic Minor',
-    stepSeq: [0, 2, 3, 5, 7, 8, 11]
-  }, {
-    name   : 'Melodic Minor',
-    stepSeq: [0, 2, 3, 5, 7, 9, 11]
-  }, {
-    name   : 'Ionian',
+    name   : 'Ionian / Major',
     stepSeq: [0, 2, 4, 5, 7, 9, 11]
   }, {
     name   : 'Dorian',
@@ -33,17 +21,35 @@ export module Scale {
     name   : 'Mixolydian',
     stepSeq: [0, 2, 4, 5, 7, 9, 10]
   }, {
-    name   : 'Aeolian',
+    name   : 'Aeolian / Minor',
     stepSeq: [0, 2, 3, 5, 7, 8, 10]
   }, {
     name   : 'Locrian',
     stepSeq: [0, 1, 3, 5, 6, 8, 10]
+  }, {
+    name   : 'Harmonic Minor',
+    stepSeq: [0, 2, 3, 5, 7, 8, 11]
+  }, {
+    name   : 'Melodic Minor',
+    stepSeq: [0, 2, 3, 5, 7, 9, 11]
+  }, {
+    name   : 'Altered',
+    stepSeq: [0, 1, 3, 4, 6, 8, 10]
+  }, {
+    name   : 'Com-Dimi',
+    stepSeq: [0, 1, 3, 4, 6, 7, 9, 10]
+  }, {
+    name   : 'Symmetrical Aug',
+    stepSeq: [0, 3, 4, 7, 8, 11]
   }, {
     name   : 'Major Pentatonic',
     stepSeq: [0, 2, 4, 7, 9]
   }, {
     name   : 'Minor Pentatonic',
     stepSeq: [0, 3, 5, 7, 10]
+  }, {
+    name   : 'Kumoi Pentatonic',
+    stepSeq: [0, 3, 5, 6, 10]
   }, {
     name   : 'Major Blues',
     stepSeq: [0, 2, 3, 4, 7, 9]
