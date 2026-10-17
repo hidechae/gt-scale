@@ -25,9 +25,6 @@ export default function App() {
     </header>
 
     <section className="fretboard-panel" aria-label="Fretboard">
-      <div className="fret-numbers" aria-hidden="true">
-        {Array.from({ length: 22 }, (_, index) => <span key={index}>{index === 0 ? 'Open' : index}</span>)}
-      </div>
       <div className="fretboard">
         <div className="inlay-columns" aria-hidden="true">
           {Array.from({ length: 22 }, (_, fret) => <div className={`inlay ${singleInlayFrets.has(fret) ? 'single-inlay' : ''} ${fret === 12 ? 'double-inlay' : ''}`} key={fret}>
@@ -44,6 +41,9 @@ export default function App() {
             </div>
           })}
         </div>)}
+      </div>
+      <div className="fret-numbers" aria-hidden="true">
+        {Array.from({ length: 22 }, (_, index) => <span key={index}>{index === 0 ? 'Open' : index}</span>)}
       </div>
     </section>
 
