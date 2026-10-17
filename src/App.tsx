@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { chords, instruments, intervals, scales, toneLabel, tones, type Pattern } from './data'
 
-const markerFrets = new Set([3, 5, 7, 9, 15, 17, 19, 21])
+const singleInlayFrets = new Set([3, 5, 7, 9, 15, 17, 19])
 
 export default function App() {
   const [instrumentId, setInstrumentId] = useState(instruments[0].id)
@@ -29,11 +29,17 @@ export default function App() {
         {Array.from({ length: 22 }, (_, index) => <span key={index}>{index === 0 ? 'Open' : index}</span>)}
       </div>
       <div className="fretboard">
+        <div className="inlay-columns" aria-hidden="true">
+          {Array.from({ length: 22 }, (_, fret) => <div className={`inlay ${singleInlayFrets.has(fret) ? 'single-inlay' : ''} ${fret === 12 ? 'double-inlay' : ''}`} key={fret}>
+            {singleInlayFrets.has(fret) && <span />}
+            {fret === 12 && <><span /><span /></>}
+          </div>)}
+        </div>
         {instrument.strings.map((string, stringIndex) => <div className="string" key={stringIndex}>
           {string.map((note, fret) => {
             const interval = (12 + note - root.step) % 12
             const inPattern = pattern.steps.includes(interval)
-            return <div className={`fret ${markerFrets.has(fret) ? 'marker' : ''} ${fret === 12 ? 'double-marker' : ''}`} key={fret}>
+            return <div className="fret" key={fret}>
               {inPattern && <span className={`note ${selected.has(interval) ? 'highlighted' : ''}`}>{showTones ? toneLabel(note, root.step) : intervals[interval]}</span>}
             </div>
           })}
