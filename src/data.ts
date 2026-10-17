@@ -13,9 +13,15 @@ export const scales = patterns([
   ['Ionian / Major', [0, 2, 4, 5, 7, 9, 11]], ['Dorian', [0, 2, 3, 5, 7, 9, 10]], ['Phrygian', [0, 1, 3, 5, 7, 8, 10]],
   ['Lydian', [0, 2, 4, 6, 7, 9, 11]], ['Mixolydian', [0, 2, 4, 5, 7, 9, 10]], ['Aeolian / Minor', [0, 2, 3, 5, 7, 8, 10]],
   ['Locrian', [0, 1, 3, 5, 6, 8, 10]], ['Harmonic Minor', [0, 2, 3, 5, 7, 8, 11]], ['Melodic Minor', [0, 2, 3, 5, 7, 9, 11]],
-  ['Altered', [0, 1, 3, 4, 6, 8, 10]], ['Com-Dimi', [0, 1, 3, 4, 6, 7, 9, 10]], ['Symmetrical Aug', [0, 3, 4, 7, 8, 11]],
+  ['Dorian ♭2', [0, 1, 3, 5, 7, 9, 10]], ['Lydian Augmented', [0, 2, 4, 6, 8, 9, 11]], ['Lydian Dominant', [0, 2, 4, 6, 7, 9, 10]],
+  ['Mixolydian ♭6', [0, 2, 4, 5, 7, 8, 10]], ['Locrian ♯2', [0, 2, 3, 5, 6, 8, 10]], ['Altered', [0, 1, 3, 4, 6, 8, 10]],
+  ['Phrygian Dominant', [0, 1, 4, 5, 7, 8, 10]], ['Hungarian Minor', [0, 2, 3, 6, 7, 8, 11]], ['Double Harmonic Major', [0, 1, 4, 5, 7, 8, 11]],
+  ['Com-Dimi / Diminished (Half-Whole)', [0, 1, 3, 4, 6, 7, 9, 10]], ['Diminished (Whole-Half)', [0, 2, 3, 5, 6, 8, 9, 11]],
+  ['Whole Tone', [0, 2, 4, 6, 8, 10]], ['Symmetrical Aug', [0, 3, 4, 7, 8, 11]], ['Bebop Dominant', [0, 2, 4, 5, 7, 9, 10, 11]],
+  ['Bebop Major', [0, 2, 4, 5, 7, 8, 9, 11]],
   ['Major Pentatonic', [0, 2, 4, 7, 9]], ['Minor Pentatonic', [0, 3, 5, 7, 10]], ['Kumoi Pentatonic', [0, 2, 3, 7, 9]],
-  ['Minor ♭5 Pentatonic', [0, 3, 5, 6, 10]], ['Major Blues', [0, 2, 3, 4, 7, 9]], ['Minor Blues', [0, 3, 5, 6, 7, 10]],
+  ['Hirajoshi', [0, 2, 3, 7, 8]], ['In Sen', [0, 1, 5, 7, 10]], ['Minor ♭5 Pentatonic', [0, 3, 5, 6, 10]],
+  ['Major Blues', [0, 2, 3, 4, 7, 9]], ['Minor Blues', [0, 3, 5, 6, 7, 10]], ['Chromatic', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]],
 ])
 
 export const chords = patterns([
