@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { chords, instruments, intervals, scales, toneLabel, tones, type Pattern } from './data'
+import { chords, instruments, intervals, scaleGroups, scales, toneLabel, tones, type Pattern } from './data'
 
 const singleInlayFrets = new Set([3, 5, 7, 9, 15, 17, 19])
 
@@ -65,7 +65,12 @@ export default function App() {
 
     <section className="control-card pattern-card">
       <div><h2>Scales</h2><div className="scale-grid">
-        {scales.map(item => <button aria-pressed={item === pattern} className={item === pattern ? 'selected' : ''} onClick={() => setPattern(item)} key={item.name}>{item.name}</button>)}
+        {scaleGroups.map(group => <section className="scale-group" aria-label={group.name} key={group.name}>
+          <h3>{group.name}</h3>
+          <div className="scale-buttons">
+            {group.scales.map(item => <button aria-pressed={item === pattern} className={item === pattern ? 'selected' : ''} onClick={() => setPattern(item)} key={item.name}>{item.name}</button>)}
+          </div>
+        </section>)}
       </div></div>
       <div><h2>Chords</h2><div className="chord-grid">
         {chords.map(item => <button aria-pressed={item === pattern} className={item === pattern ? 'selected' : ''} onClick={() => setPattern(item)} key={item.name}>{item.name}</button>)}
