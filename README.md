@@ -19,6 +19,23 @@ npm run build
 
 The production site is emitted to `docs/` for GitHub Pages.
 
+## PWA
+
+GtScale can be installed from a supported browser's install menu. On iPhone or
+iPad, open the site in Safari and choose Share → Add to Home Screen.
+After the first online visit finishes installing the service worker, the entire
+scale viewer works offline, including instrument, root, scale, and chord selection.
+
+The production build generates a versioned service worker that caches all built
+assets. Updates install in the background and take effect after all GtScale tabs
+and installed-app windows are closed and reopened. Caches are scoped to the app
+so other GitHub Pages sites on the same origin are unaffected.
+
+To check locally, run `npm run build` followed by `npm run preview`. Open the
+preview once online, wait for the service worker to activate, then switch the
+browser's developer tools to offline and reload. Service workers require HTTPS
+or localhost and are disabled in the development server.
+
 ## Stack
 
 - React 19
