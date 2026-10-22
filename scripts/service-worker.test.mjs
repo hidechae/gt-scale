@@ -86,6 +86,13 @@ test('install manifest and home-screen icons exist in the production output', as
   assert.equal(manifest.start_url, './')
   assert.equal(manifest.scope, './')
   assert.equal(manifest.display, 'standalone')
+  for (const path of ['/', '/gt-scale/']) {
+    const manifestURL = new URL(`https://example.com${path}manifest.webmanifest`)
+    const startURL = new URL(manifest.start_url, manifestURL)
+    // Explicit IDs resolve against the origin, unlike start_url and scope.
+    const identity = new URL(manifest.id ?? startURL.href, startURL.origin)
+    assert.equal(identity.href, startURL.href)
+  }
   for (const icon of manifest.icons) {
     const data = await readFile(new URL(icon.src, output))
     const size = Number(icon.sizes.split('x')[0])
