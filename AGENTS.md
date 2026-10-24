@@ -22,9 +22,15 @@ Keep development documentation in `dev-docs/`; `docs/` is generated production o
 - Use Conventional Commits titles and PR sections: 概要 / 変更内容 / 動作確認 /
   影響範囲・リスク. Link the Issue with `Closes #N`, or `Refs #N` when production
   verification is still needed. Do not push directly to `master`.
-- Before creating a PR, obtain an independent AI review from a different model
-  family: Claude reviews Codex implementation; Codex Sol reviews Claude
-  implementation. Record implementation/review models and results in 動作確認.
+- Before creating a PR, obtain an independent AI review. When working in Codex,
+  complete implementation and review within Codex: use a separate Codex agent or
+  session as reviewer, even when it uses the same model family. Do not require
+  a Claude call or sending changes to Claude. The implementing agent must not
+  serve as its own independent reviewer.
+- For Claude-led sessions, retain cross-family review: Claude reviews delegated
+  Codex implementation; Codex Sol reviews Claude implementation. This does not
+  override the Codex-led rule above. Record implementation/review models and
+  results in 動作確認.
 - Classify findings as BLOCKING or NON_BLOCKING. Fix BLOCKING findings together;
   follow-up reviews check those fixes and resulting regressions. Limit automatic
   review to four rounds per Issue/PR. Unresolved findings or disagreement at the

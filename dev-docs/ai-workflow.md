@@ -1,7 +1,7 @@
 # AI 開発運用方針
 
-Claude Code を開発全体のオーケストレーターとして使い、Claude と Codex のモデル・利用枠を
-分散しながら開発するための方針。
+Codex または Claude Code を主導セッションとして使い、タスク管理・実装・独立レビューを
+分担して開発するための方針。Claude 主導時は Claude と Codex のモデル・利用枠を分散する。
 
 このドキュメントは**進め方**を定める。GtScale の必須ルールは [AGENTS.md](../AGENTS.md) にあり、
 **衝突した場合は AGENTS.md が優先する**。Claude Code も [CLAUDE.md](../CLAUDE.md) 経由で同じルールを読む。
@@ -10,6 +10,25 @@ Claude Code を開発全体のオーケストレーターとして使い、Claud
 モデル ID は利用環境で選択可能か確認し、利用できない場合は同じ役割のモデルを選んで記録する。
 この文書は開発運用の定義であり、GitHub Actions の自動実行設定ではない。
 `docs/` は GitHub Pages の生成物専用とし、開発文書と design doc は `dev-docs/` に保存する。
+
+## Codex 主導時のルール
+
+**Codex で作業しているときは、実装からレビューまで Codex 内で完結させる。**
+
+- Main Session・実装担当・レビュアーには Codex を使う。Claude の呼び出しや、変更内容を
+  Claude に送信することを必須にしない。
+- 独立レビューは、実装担当とは**別の Codex エージェントまたは別セッション**が行う。
+  同じモデル系列でもよいが、実装担当自身による自己レビューでは代替しない。
+- レビュアーは指摘のみを返し、実装担当が修正する。BLOCKING の解消、最大4回の
+  自動レビュー、CI・検証・PR・マージの条件は [AGENTS.md](../AGENTS.md) に従う。
+- 実装とレビューに使ったモデル・担当の分離・レビュー回数と結果を PR 本文に記録する。
+  Codex 内のレビューは標準運用であり、その都度の例外承認は不要。
+- Codex 主導時の最終的な実装責任は、そのタスクを担当する Codex セッションが持つ。
+  モデルは利用環境とタスクに合わせて選ぶ。以下の Claude 主導時の Sol 実装制限は適用しない。
+
+以降の Claude の役割・モデル選択・異系列レビューに関する記述と図は、**Claude 主導時**の
+運用を示す。Codex 主導時はこの節が優先し、Issue 管理・プロンプト・検証・報告などの
+共通手順にある「Claude」は担当する Codex セッションに読み替える。
 
 ```text
 Main Claude Session
@@ -176,15 +195,16 @@ Sub-session は割り当てられたタスクの **実行責任者** である�
 5. 実装する
 6. 変更に応じて検証する(`npm run build`、PWA 変更時は `node --test scripts/service-worker.test.mjs`、必要な画面確認)。
    公開アプリに影響する場合は生成された `docs/` の全変更も含める
-7. **PR 前に実装担当と異なる系列の AI レビューを通す**
-   (AGENTS.md「独立 AI レビュー」)
+7. **PR 前に独立 AI レビューを通す**。Codex 主導時は別の Codex エージェント/セッション、
+   Claude 主導時は実装担当と異なる系列が担当する(AGENTS.md の PR rules)
 8. レビュー結果を検証し、BLOCKING の指摘に対応する
 9. Acceptance Criteria を確認する
 10. **PR を作成し、CI 確認とマージまで自分で行う**
     (`dev-docs/design/` 配下の PR はマージせず人間に依頼する)
 11. Main Session に返せる形で結果をまとめる
 
-Codex の回答を無条件に採用してはいけない。**Sub-session の Claude が最終的な実装責任を持つ。**
+エージェントの回答を無条件に採用してはいけない。**タスクを担当する Sub-session が
+最終的な実装責任を持つ**(Codex 主導時は Codex、Claude 主導時は Claude)。
 
 ---
 
@@ -203,7 +223,8 @@ Claude 自身で処理してよい。
 
 ### 実装を委譲した場合の注意
 
-**実装担当とレビュアーは異なる系列にする**(AGENTS.md「独立 AI レビュー」)。Codex が
+**Claude 主導時は実装担当とレビュアーを異なる系列にする**(AGENTS.md の PR rules)。
+Codex 主導時は冒頭のルールに従い、別の Codex がレビューする。Claude 主導で Codex が
 実装した変更を Codex Sol にレビューさせるのではなく、通常は Claude Sonnet、高リスク変更は
 Claude Opus がレビューする。Claude が実装した変更は Codex Sol がレビューする。
 
@@ -246,7 +267,7 @@ independent feature implementation / 複数ファイル変更 / tests を含む�
 
 仕様が完全には明記されていなくても、repository を調査すれば判断できるタスクに適している。
 
-### Sol — specialist / reviewer
+### Sol — specialist / reviewer (Claude 主導時)
 
 レビューと高難度の調査・推論に使う。
 Claude が実装した変更の PR 前レビューに加えて、difficult production bug / concurrency /
@@ -279,6 +300,8 @@ normal      complex       cheap    normal    hard
 ---
 
 ## 9. 実行パターン
+
+Pattern A〜F は Claude 主導時、Pattern G は Codex 主導時に使う。
 
 ### Pattern A — 通常実装
 
@@ -349,6 +372,21 @@ design doc の PR は合意形成が目的なので、**マージは人間が行
 
 ---
 
+### Pattern G — Codex 内で完結
+
+```text
+Codex Main / implementation session ── implementation + tests
+    ──▶ 別の Codex agent / session ── independent review
+    ──▶ 実装担当 Codex ── BLOCKING 修正 + verification
+    ──▶ レビュアー Codex ── focused re-review (必要な場合のみ)
+    ──▶ 実装担当 Codex ── PR + checks + merge
+```
+
+小さな変更は Main Session が実装してよいが、独立レビュアーは別にする。
+`dev-docs/design/` を含む PR は、Codex 主導時も人間がマージ判断する。
+
+---
+
 ## 10. 実装・レビュープロンプト方針
 
 実装や調査を委譲するときは目的と責務を明確にする。特に Codex Sol には以下を含める。
@@ -381,7 +419,8 @@ AI レビューは 1 Issue / PR につき最大4回とする。1回目の BLOCKI
 
 ## 11. 結果の検証
 
-Codex の結果は Claude が検証する。最低限:
+委譲した結果は実行責任を持つセッションが検証する(Codex 主導時は Codex、
+Claude 主導時は Claude)。最低限:
 
 - 実際のコードと整合しているか
 - requirements / acceptance criteria を満たしているか
@@ -389,7 +428,7 @@ Codex の結果は Claude が検証する。最低限:
 - unnecessary complexity がないか / scope を逸脱していないか
 - tests が十分か
 
-Claude と Codex の意見が異なる場合、**モデルの強さではなく evidence を優先する。**
+実装担当とレビュアーの意見が異なる場合、**モデルの強さではなく evidence を優先する。**
 コード、テスト結果、仕様、再現結果を判断材料とする。
 
 ---
@@ -449,6 +488,9 @@ Codex:  Luna → Terra → Sol only when necessary
 
 ## 14. モデル選択一覧
 
+以下は Claude 主導時の推奨。Codex 主導時は冒頭のルールに従い、実装・独立レビューともに
+利用可能な Codex モデルを選ぶ。
+
 | Work | Model |
 |---|---|
 | Main Session / タスク管理・進捗管理 | Claude Sonnet |
@@ -469,9 +511,9 @@ Codex:  Luna → Terra → Sol only when necessary
 
 - **Main Session manages. Sub-sessions execute.**
 - **Every executable task gets a model recommendation.** — Sub-session プロンプトには必ず推奨モデルを書く
-- **Claude orchestrates. Codex assists.** — Sub-session の Claude が実行責任者
+- **The owning session is responsible.** — Codex 主導時は Codex、Claude 主導時は Claude が実行責任者
 - **Use the cheapest model capable of doing the task reliably.** — 高性能モデルを既定にしない
 - **Decompose before escalating.**
-- **Cross-model review is valuable.** — 実装担当と異なる系列のモデルでレビューする(§6)
+- **Independent review is required.** — Codex 主導時は別の Codex、Claude 主導時は異なる系列がレビューする(§6)
 - **Bound the review loop.** — 自動レビューは最大4回。続行判断は人間へ戻す
 - **Evidence beats model authority.**
