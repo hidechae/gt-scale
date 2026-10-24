@@ -41,3 +41,10 @@ or localhost and are disabled in the development server.
 - React 19
 - TypeScript
 - Vite
+
+## AI development workflow
+
+See [AI 開発運用方針](dev-docs/ai-workflow.md) for Claude/Codex task delegation,
+model selection, and independent review. Repository rules are defined in
+[AGENTS.md](AGENTS.md); Claude Code loads them through [CLAUDE.md](CLAUDE.md).
+Development documents live in `dev-docs/` because `docs/` is generated for GitHub Pages.
