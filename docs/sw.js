@@ -1,6 +1,6 @@
 const CACHE_PREFIX = `gtscale:${self.registration.scope}:`
-const CACHE_NAME = `${CACHE_PREFIX}47267f912466702d`
-const ASSETS = ["assets/favicon-DnXCc2Ot.ico","assets/index-D9ELUhA9.css","assets/index-wNVzLyvf.js","icons/apple-touch-icon.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","index.html","manifest.webmanifest"]
+const CACHE_NAME = `${CACHE_PREFIX}1a0abaafa3e454a2`
+const ASSETS = ["assets/favicon-DnXCc2Ot.ico","assets/index-D9ELUhA9.css","assets/index-DvF_76mr.js","icons/apple-touch-icon.png","icons/icon-192.png","icons/icon-512.png","icons/icon-maskable-512.png","index.html","manifest.webmanifest"]
 const assetURLs = ASSETS.map(path => new URL(path, self.registration.scope).href)
 const appURL = new URL('index.html', self.registration.scope).href
 

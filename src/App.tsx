@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { chords, instruments, intervals, scaleGroups, scales, toneLabel, tones, type Pattern } from './data'
+import { chords, instruments, intervals, intervalTensions, scaleGroups, scales, toneLabel, tones, type Pattern } from './data'
 
 const singleInlayFrets = new Set([3, 5, 7, 9, 15, 17, 19])
 
@@ -54,7 +54,7 @@ export default function App() {
         </select>
       </label>
       <div className="intervals" aria-label="Highlight intervals">
-        {intervals.map((label, interval) => pattern.steps.includes(interval) && <button aria-pressed={selected.has(interval)} className={selected.has(interval) ? 'selected' : ''} onClick={() => toggleInterval(interval)} key={label}>{label}</button>)}
+        {intervals.map((label, interval) => pattern.steps.includes(interval) && <button aria-pressed={selected.has(interval)} className={selected.has(interval) ? 'selected' : ''} onClick={() => toggleInterval(interval)} key={label}>{label}{intervalTensions[interval] && `|${intervalTensions[interval]}`}</button>)}
       </div>
       <label className="switch"><input type="checkbox" checked={showTones} onChange={event => setShowTones(event.target.checked)} /><span aria-hidden="true"/><b>Note names</b></label>
     </section>
