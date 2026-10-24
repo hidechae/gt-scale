@@ -9,6 +9,7 @@ const patterns = (values: [string, number[]][]): Pattern[] => values.map(([name,
 
 export const tones: Tone[] = ['A', 'A♯', 'B', 'C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯'].map((name, step) => ({ name, step }))
 export const intervals = ['T', 'm2', 'M2', 'm3', 'M3', 'P4', '♯4', 'P5', 'm6', 'M6', 'm7', 'M7']
+export const intervalTensions: Record<number, string> = { 1: '♭9', 2: '9', 3: '♯9', 5: '11', 6: '♯11', 8: '♭13', 9: '13' }
 
 const diatonicScales = patterns([
   ['Ionian / Major', [0, 2, 4, 5, 7, 9, 11]], ['Dorian', [0, 2, 3, 5, 7, 9, 10]], ['Phrygian', [0, 1, 3, 5, 7, 8, 10]],
