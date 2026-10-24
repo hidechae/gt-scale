@@ -36,6 +36,23 @@ preview once online, wait for the service worker to activate, then switch the
 browser's developer tools to offline and reload. Service workers require HTTPS
 or localhost and are disabled in the development server.
 
+## Access analytics
+
+The published site uses Google Analytics 4 (`G-ZE73KTQ33W`) through the
+asynchronous Google tag. Initialization in `src/analytics.ts` runs once per page
+load, outside React rendering, only in production on
+`https://hidechae.github.io/gt-scale/`. Development, localhost previews, and other
+hosts or app paths do not load the tag or send analytics.
+
+The tag records the default page view; no custom interaction events are added.
+Google requests are not cached by the service worker. Blocking the tag or going
+offline does not prevent the scale viewer from working.
+
+After deploying, open the published site and check the GA4 Realtime report for
+incoming activity. Existing PWA installations need to close all app tabs/windows
+and reopen them to activate the updated version. Historical visits before this
+tag was installed are not available.
+
 ## Stack
 
 - React 19
