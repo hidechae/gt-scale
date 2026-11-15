@@ -37,7 +37,7 @@ export default function App() {
             const interval = (12 + note - root.step) % 12
             const inPattern = pattern.steps.includes(interval)
             return <div className="fret" key={fret}>
-              {inPattern && <span className={`note ${selected.has(interval) ? 'highlighted' : ''}`}>{showTones ? toneLabel(note, root.step) : intervals[interval]}</span>}
+              {inPattern && <span className={`note ${selected.has(interval) ? 'highlighted' : ''}`} data-interval={interval}>{showTones ? toneLabel(note, root.step) : intervals[interval]}</span>}
             </div>
           })}
         </div>)}
@@ -54,7 +54,7 @@ export default function App() {
         </select>
       </label>
       <div className="intervals" aria-label="Highlight intervals">
-        {intervals.map((label, interval) => pattern.steps.includes(interval) && <button aria-pressed={selected.has(interval)} className={selected.has(interval) ? 'selected' : ''} onClick={() => toggleInterval(interval)} key={label}>{label}{intervalTensions[interval] && `|${intervalTensions[interval]}`}</button>)}
+        {intervals.map((label, interval) => pattern.steps.includes(interval) && <button data-interval={interval} aria-pressed={selected.has(interval)} className={selected.has(interval) ? 'selected' : ''} onClick={() => toggleInterval(interval)} key={label}>{label}{intervalTensions[interval] && `|${intervalTensions[interval]}`}</button>)}
       </div>
       <label className="switch"><input type="checkbox" checked={showTones} onChange={event => setShowTones(event.target.checked)} /><span aria-hidden="true"/><b>Note names</b></label>
     </section>
